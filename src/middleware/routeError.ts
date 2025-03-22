@@ -1,9 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
+import { ErrorRequestHandler } from 'express';
 import logger from '../config/logger';
 
-export function routeError(req: Request, res: Response, next: NextFunction) {
-  const error = new Error('Route not found');
-
+export const routeError: ErrorRequestHandler = (error, req, res, next) => {
   logger.error(error);
-  res.status(404).json({ error: error.message });
-}
+  res.status(error.status || 500).json({ error: error.message || 'Internal Server Error' });
+};

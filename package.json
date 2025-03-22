@@ -22,17 +22,23 @@
   "homepage": "https://github.com/MixMatch-Inc/MixMatch-Backend#readme",
   "description": "",
   "dependencies": {
+    "cookie-session": "^2.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.10.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
     "pino": "^9.6.0",
     "pino-pretty": "^13.0.0"
   },
   "devDependencies": {
+    "@types/cookie-session": "^2.0.49",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.11",
+    "@types/passport": "^1.0.17",
+    "@types/passport-google-oauth20": "^2.0.16",
     "@types/winston": "^2.4.4",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
