@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["node", "express"],
     "outDir": "./build",
     "rootDir": "./src",
     "target": "es2016",

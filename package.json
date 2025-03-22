@@ -25,13 +25,14 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mongoose": "^8.10.2",
+    "mongoose": "^8.12.2",
     "pino": "^9.6.0",
     "pino-pretty": "^13.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
+    "@types/mongoose": "^5.11.96",
     "@types/node": "^22.13.11",
     "@types/winston": "^2.4.4",
     "nodemon": "^3.1.9",

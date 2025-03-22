@@ -2,11 +2,13 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import logger from './config/logger';
+import { connectDB } from './config/db';
 import { loggingHandler } from './middleware/pinoHttp';
 import { routeError } from './middleware/routeError';
 
 dotenv.config();
 const app = express();
+connectDB();
 
 app.use(
   cors({
@@ -26,11 +28,12 @@ app.use('/health', (req, res) => {
 
 app.use(routeError);
 
-app.listen(process.env.PORT, () => {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
   logger.info(
     `<---------------------------------------------------------------->`
   );
-  logger.info(`Server is running on port ${process.env.PORT}`);
+  logger.info(`Server is running on port ${PORT}`);
   logger.info(
     `<---------------------------------------------------------------->`
   );
