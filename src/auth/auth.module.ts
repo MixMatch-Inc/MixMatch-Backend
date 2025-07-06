@@ -6,9 +6,13 @@ import { AuthService } from "./auth.service"
 import { JwtStrategy } from "./strategies/jwt.strategy"
 import { UsersModule } from "../users/users.module"
 import { AuthController } from "./auth.controller"
+import { User } from "src/users/entities/user.entity"
+import { AppleAuthService } from "./apple/apple-auth.service"
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([User]),
     UsersModule,
     PassportModule,
     JwtModule.registerAsync({
@@ -17,12 +21,12 @@ import { AuthController } from "./auth.controller"
       useFactory: (configService: ConfigService) => ({
         secret: configService.get<string>("JWT_SECRET"),
         signOptions: {
-          expiresIn: "1h", // JWT expires in 1 hour as per requirements
+          expiresIn: "1h", 
         },
       }),
     }),
   ],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy, AppleAuthService],
   exports: [AuthService],
   controllers: [AuthController],
 })
