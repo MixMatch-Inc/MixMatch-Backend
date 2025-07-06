@@ -1,23 +1,32 @@
-import type { MusicProvider } from "@prisma/client"
+import { Entity, PrimaryGeneratedColumn, Column, Unique } from 'typeorm';
 
+@Entity()
+@Unique(['appleUserId']) 
 export class User {
-  id: string
-  email?: string
-  displayName: string
-  musicProvider: MusicProvider
-  musicId: string
-  accessToken: string
-  refreshToken: string
-  createdAt: Date
-  updatedAt: Date
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-  constructor(partial: Partial<User>) {
-    Object.assign(this, partial)
-  }
+  @Column({ nullable: true })
+  email?: string; 
 
-  // Method to get user without sensitive data
-  toPublic() {
-    const { accessToken, refreshToken, ...publicUser } = this
-    return publicUser
-  }
+  @Column({ nullable: true })
+  firstName?: string; 
+
+  @Column({ nullable: true })
+  lastName?: string; 
+
+  @Column({ nullable: true })
+  appleUserId?: string; 
+
+  @Column({ type: 'text', nullable: true })
+  appleRefreshToken?: string; 
+  
+  @Column({ type: 'text', nullable: true })
+  musicUserToken?: string; 
+
+  @Column({ nullable: true })
+  musicStorefrontId?: string; 
+
+  @Column({ type: 'timestamp', nullable: true })
+  musicUserTokenExpiresAt?: Date; 
 }
